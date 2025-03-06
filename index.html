@@ -128,6 +128,7 @@
     .tab-trigger.active {
       background-color: #9333ea;
       transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
     }
 
     .tab-content {
@@ -159,10 +160,11 @@
       display: flex;
       flex-direction: column;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .editor-container:hover {
-      box-shadow: 0 0 15px rgba(147, 51, 234, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
     .image-container {
@@ -203,7 +205,7 @@
 
     .dropzone:hover svg {
       transform: scale(1.1);
-      color: rgba(255, 255, 255, 0.8);
+      color: #9333ea;
     }
 
     .dropzone p {
@@ -264,6 +266,7 @@
       align-items: center;
       justify-content: center;
       z-index: 10;
+      backdrop-filter: blur(4px);
     }
 
     .spinner {
@@ -295,10 +298,11 @@
       border-radius: 0.5rem;
       padding: 1rem;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .controls-panel:hover {
-      box-shadow: 0 0 15px rgba(147, 51, 234, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
     .controls-tabs {
@@ -316,6 +320,11 @@
 
     .slider-container {
       margin-bottom: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .slider-container:hover {
+      transform: translateX(5px);
     }
 
     .slider-header {
@@ -334,6 +343,12 @@
     .slider-icon {
       width: 1.25rem;
       height: 1.25rem;
+      transition: transform 0.2s ease;
+    }
+
+    .slider-container:hover .slider-icon {
+      transform: rotate(15deg);
+      color: #9333ea;
     }
 
     .slider {
@@ -343,11 +358,11 @@
       background: rgba(255, 255, 255, 0.2);
       border-radius: 0.125rem;
       outline: none;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .slider:hover {
-      height: 0.35rem;
+      height: 0.375rem;
       background: rgba(255, 255, 255, 0.3);
     }
 
@@ -358,13 +373,13 @@
       border-radius: 50%;
       background: #9333ea;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .slider::-webkit-slider-thumb:hover {
-      width: 1.2rem;
-      height: 1.2rem;
-      box-shadow: 0 0 5px rgba(147, 51, 234, 0.8);
+      width: 1.25rem;
+      height: 1.25rem;
+      box-shadow: 0 0 8px rgba(147, 51, 234, 0.8);
     }
 
     .slider::-moz-range-thumb {
@@ -374,13 +389,13 @@
       background: #9333ea;
       cursor: pointer;
       border: none;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .slider::-moz-range-thumb:hover {
-      width: 1.2rem;
-      height: 1.2rem;
-      box-shadow: 0 0 5px rgba(147, 51, 234, 0.8);
+      width: 1.25rem;
+      height: 1.25rem;
+      box-shadow: 0 0 8px rgba(147, 51, 234, 0.8);
     }
 
     /* Effects section */
@@ -396,6 +411,11 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .checkbox-container:hover {
+      transform: translateX(5px);
     }
 
     .checkbox {
@@ -407,16 +427,15 @@
       background-color: rgba(0, 0, 0, 0.5);
       cursor: pointer;
       position: relative;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .checkbox:hover {
-      border-color: rgba(147, 51, 234, 0.5);
+      border-color: #9333ea;
     }
 
     .checkbox:checked {
       background-color: #9333ea;
-      border-color: #9333ea;
     }
 
     .checkbox:checked::after {
@@ -446,15 +465,18 @@
       overflow: hidden;
       border: 2px solid transparent;
       transition: all 0.3s ease;
+      transform-origin: center;
     }
 
     .batch-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .batch-item.selected {
       border-color: #9333ea;
+      box-shadow: 0 0 12px rgba(147, 51, 234, 0.5);
     }
 
     .batch-image-container {
@@ -470,7 +492,7 @@
     }
 
     .batch-item:hover .batch-image {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .batch-item-actions {
@@ -479,14 +501,29 @@
       left: 0.5rem;
       display: flex;
       gap: 0.25rem;
+      z-index: 2;
     }
 
-    .batch-item-actions button {
+    .batch-select-btn {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .batch-item-actions button:hover {
-      transform: scale(1.2);
+    .batch-select-btn:hover {
+      background-color: #9333ea;
+      transform: scale(1.1);
+    }
+
+    .batch-select-btn.selected {
+      background-color: #9333ea;
     }
 
     .batch-item-remove {
@@ -503,11 +540,12 @@
       justify-content: center;
       cursor: pointer;
       transition: all 0.2s ease;
+      z-index: 2;
     }
 
     .batch-item-remove:hover {
-      background-color: rgba(220, 38, 38, 1);
-      transform: scale(1.2);
+      background-color: rgb(220, 38, 38);
+      transform: scale(1.1);
     }
 
     .processed-badge {
@@ -522,11 +560,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 2;
       transition: all 0.2s ease;
     }
 
     .processed-badge:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
     }
 
     .resize-inputs {
@@ -535,6 +575,7 @@
       gap: 0.5rem;
       padding-left: 1.5rem;
       padding-top: 0.5rem;
+      animation: fadeIn 0.3s ease-out;
     }
 
     .input-group label {
@@ -588,6 +629,18 @@
       animation: pulse 0.5s ease-in-out;
     }
 
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.5s ease-in-out;
+    }
+
     /* Hide file input */
     .file-input {
       display: none;
@@ -603,6 +656,80 @@
       font-size: 1.25rem;
       font-weight: bold;
       margin-bottom: 1rem;
+    }
+
+    /* Presets section */
+    .presets-section {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .presets-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .presets-title {
+      font-size: 1.125rem;
+      font-weight: bold;
+    }
+
+    .presets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .preset-item {
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .preset-item:hover {
+      background-color: rgba(147, 51, 234, 0.2);
+      border-color: #9333ea;
+      transform: translateY(-2px);
+    }
+
+    .preset-item.active {
+      background-color: rgba(147, 51, 234, 0.3);
+      border-color: #9333ea;
+    }
+
+    .preset-name {
+      font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .preset-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .preset-input {
+      flex: 1;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      color: white;
+    }
+
+    .preset-input:focus {
+      border-color: #9333ea;
+      outline: none;
     }
 
     /* Batch tabs */
@@ -626,6 +753,39 @@
     .batch-controls-tab-content.active {
       display: block;
       animation: fadeIn 0.3s ease-out;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-success {
+      border-left: 4px solid #22c55e;
+    }
+
+    .toast-error {
+      border-left: 4px solid #ef4444;
+    }
+
+    .toast-info {
+      border-left: 4px solid #3b82f6;
     }
 
     /* Responsive adjustments */
@@ -652,6 +812,11 @@
     </video>
   </div>
   <div class="gradient-overlay"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <div id="toast-message"></div>
+  </div>
 
   <!-- Main Container -->
   <div class="container">
@@ -833,7 +998,6 @@
               <div class="slider-header">
                 <div class="slider-label">
                   <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 12h-4l-  stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                   </svg>
                   <span>Vignette</span>
@@ -952,6 +1116,38 @@
               </div>
             </div>
           </div>
+
+          <!-- Presets Section -->
+          <div class="presets-section">
+            <div class="presets-header">
+              <h3 class="presets-title">Saved Presets</h3>
+              <button id="save-preset-btn" class="btn" disabled>Save Current</button>
+            </div>
+            <div id="presets-grid" class="presets-grid">
+              <div class="preset-item" data-preset="default">
+                <div class="preset-name">Default</div>
+              </div>
+              <div class="preset-item" data-preset="warm">
+                <div class="preset-name">Warm</div>
+              </div>
+              <div class="preset-item" data-preset="cool">
+                <div class="preset-name">Cool</div>
+              </div>
+              <div class="preset-item" data-preset="vintage">
+                <div class="preset-name">Vintage</div>
+              </div>
+              <div class="preset-item" data-preset="bw">
+                <div class="preset-name">B&W</div>
+              </div>
+            </div>
+            <div id="save-preset-form" style="display: none;">
+              <div class="preset-form">
+                <input type="text" id="preset-name-input" class="preset-input" placeholder="Preset name">
+                <button id="confirm-save-preset" class="btn btn-primary">Save</button>
+                <button id="cancel-save-preset" class="btn">Cancel</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1015,6 +1211,7 @@
         <div class="controls-panel">
           <h2 class="section-title">Batch Settings</h2>
           
+          <!-- Batch Controls Tabs -->
           <div class="batch-controls-tabs">
             <div class="batch-controls-tabs-list">
               <div class="tab-trigger active" data-batch-tab="adjust">Adjust</div>
@@ -1084,20 +1281,6 @@
                 <span id="batch-highlights-value">0</span>
               </div>
               <input type="range" id="batch-highlights-slider" class="slider" min="-100" max="100" value="0">
-            </div>
-            
-            <div class="slider-container">
-              <div class="slider-header">
-                <div class="slider-label">
-                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"></path>
-                    <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
-                  </svg>
-                  <span>Shadows</span>
-                </div>
-                <span id="batch-shadows-value">0</span>
-              </div>
-              <input type="range" id="batch-shadows-slider" class="slider" min="-100" max="100" value="0">
             </div>
             
             <div class="slider-container">
@@ -1221,7 +1404,39 @@
             </div>
           </div>
           
-          <button id="process-batch-btn-bottom" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" disabled>
+          <!-- Batch Presets Section -->
+          <div class="presets-section">
+            <div class="presets-header">
+              <h3 class="presets-title">Batch Presets</h3>
+              <button id="save-batch-preset-btn" class="btn">Save Current</button>
+            </div>
+            <div id="batch-presets-grid" class="presets-grid">
+              <div class="preset-item" data-preset="default">
+                <div class="preset-name">Default</div>
+              </div>
+              <div class="preset-item" data-preset="warm">
+                <div class="preset-name">Warm</div>
+              </div>
+              <div class="preset-item" data-preset="cool">
+                <div class="preset-name">Cool</div>
+              </div>
+              <div class="preset-item" data-preset="vintage">
+                <div class="preset-name">Vintage</div>
+              </div>
+              <div class="preset-item" data-preset="bw">
+                <div class="preset-name">B&W</div>
+              </div>
+            </div>
+            <div id="save-batch-preset-form" style="display: none;">
+              <div class="preset-form">
+                <input type="text" id="batch-preset-name-input" class="preset-input" placeholder="Preset name">
+                <button id="confirm-save-batch-preset" class="btn btn-primary">Save</button>
+                <button id="cancel-save-batch-preset" class="btn">Cancel</button>
+              </div>
+            </div>
+          </div>
+          
+          <button id="process-batch-btn-bottom" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" disabled>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -1254,6 +1469,14 @@
     const removeBgBtn = document.getElementById('remove-bg-btn');
     const upscaleBtn = document.getElementById('upscale-btn');
     const autoEnhanceBtn = document.getElementById('auto-enhance-btn');
+    const savePresetBtn = document.getElementById('save-preset-btn');
+    const savePresetForm = document.getElementById('save-preset-form');
+    const presetNameInput = document.getElementById('preset-name-input');
+    const confirmSavePresetBtn = document.getElementById('confirm-save-preset');
+    const cancelSavePresetBtn = document.getElementById('cancel-save-preset');
+    const presetsGrid = document.getElementById('presets-grid');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
     
     // Batch elements
     const batchDropzone = document.getElementById('batch-dropzone');
@@ -1266,6 +1489,12 @@
     const processBatchBtnBottom = document.getElementById('process-batch-btn-bottom');
     const saveBatchBtn = document.getElementById('save-batch-btn');
     const batchAutoEnhanceBtn = document.getElementById('batch-auto-enhance-btn');
+    const saveBatchPresetBtn = document.getElementById('save-batch-preset-btn');
+    const saveBatchPresetForm = document.getElementById('save-batch-preset-form');
+    const batchPresetNameInput = document.getElementById('batch-preset-name-input');
+    const confirmSaveBatchPresetBtn = document.getElementById('confirm-save-batch-preset');
+    const cancelSaveBatchPresetBtn = document.getElementById('cancel-save-batch-preset');
+    const batchPresetsGrid = document.getElementById('batch-presets-grid');
     
     // Sliders
     const sliders = {
@@ -1300,7 +1529,6 @@
       exposure: document.getElementById('batch-exposure-slider'),
       contrast: document.getElementById('batch-contrast-slider'),
       highlights: document.getElementById('batch-highlights-slider'),
-      shadows: document.getElementById('batch-shadows-slider'),
       vignette: document.getElementById('batch-vignette-slider'),
       saturation: document.getElementById('batch-saturation-slider'),
       warmth: document.getElementById('batch-warmth-slider'),
@@ -1313,7 +1541,6 @@
       exposure: document.getElementById('batch-exposure-value'),
       contrast: document.getElementById('batch-contrast-value'),
       highlights: document.getElementById('batch-highlights-value'),
-      shadows: document.getElementById('batch-shadows-value'),
       vignette: document.getElementById('batch-vignette-value'),
       saturation: document.getElementById('batch-saturation-value'),
       warmth: document.getElementById('batch-warmth-value'),
@@ -1370,6 +1597,74 @@
       resizeHeight: 1080
     };
     
+    // Presets
+    const defaultPresets = {
+      default: {
+        brightness: 0,
+        exposure: 0,
+        contrast: 0,
+        highlights: 0,
+        shadows: 0,
+        vignette: 0,
+        saturation: 0,
+        warmth: 0,
+        tint: 0,
+        sharpness: 0
+      },
+      warm: {
+        brightness: 5,
+        exposure: 0,
+        contrast: 10,
+        highlights: -5,
+        shadows: 5,
+        vignette: 10,
+        saturation: 10,
+        warmth: 30,
+        tint: 0,
+        sharpness: 10
+      },
+      cool: {
+        brightness: 0,
+        exposure: 5,
+        contrast: 10,
+        highlights: 0,
+        shadows: 0,
+        vignette: 5,
+        saturation: 5,
+        warmth: -30,
+        tint: 10,
+        sharpness: 15
+      },
+      vintage: {
+        brightness: -5,
+        exposure: 0,
+        contrast: 15,
+        highlights: -10,
+        shadows: 15,
+        vignette: 30,
+        saturation: -10,
+        warmth: 15,
+        tint: 5,
+        sharpness: 0
+      },
+      bw: {
+        brightness: 5,
+        exposure: 0,
+        contrast: 30,
+        highlights: -10,
+        shadows: 10,
+        vignette: 20,
+        saturation: -100,
+        warmth: 0,
+        tint: 0,
+        sharpness: 20
+      }
+    };
+    
+    // Load presets from localStorage or use defaults
+    let presets = JSON.parse(localStorage.getItem('photoEditorPresets')) || defaultPresets;
+    let batchPresets = JSON.parse(localStorage.getItem('photoEditorBatchPresets')) || defaultPresets;
+    
     // Initialize
     function init() {
       // Tab navigation
@@ -1377,15 +1672,13 @@
         trigger.addEventListener('click', () => {
           const tabId = trigger.getAttribute('data-tab');
           
-          // Add pulse animation
-          trigger.classList.add('pulse');
-          setTimeout(() => {
-            trigger.classList.remove('pulse');
-          }, 500);
-          
           // Update active trigger
           tabTriggers.forEach(t => t.classList.remove('active'));
           trigger.classList.add('active');
+          
+          // Add animation class
+          trigger.classList.add('pulse');
+          setTimeout(() => trigger.classList.remove('pulse'), 500);
           
           // Show active content
           tabContents.forEach(content => {
@@ -1402,15 +1695,13 @@
         trigger.addEventListener('click', () => {
           const tabId = trigger.getAttribute('data-controls-tab');
           
-          // Add pulse animation
-          trigger.classList.add('pulse');
-          setTimeout(() => {
-            trigger.classList.remove('pulse');
-          }, 500);
-          
           // Update active trigger
           controlsTabTriggers.forEach(t => t.classList.remove('active'));
           trigger.classList.add('active');
+          
+          // Add animation class
+          trigger.classList.add('pulse');
+          setTimeout(() => trigger.classList.remove('pulse'), 500);
           
           // Show active content
           controlsTabContents.forEach(content => {
@@ -1427,15 +1718,13 @@
         trigger.addEventListener('click', () => {
           const tabId = trigger.getAttribute('data-batch-tab');
           
-          // Add pulse animation
-          trigger.classList.add('pulse');
-          setTimeout(() => {
-            trigger.classList.remove('pulse');
-          }, 500);
-          
           // Update active trigger
           batchTabTriggers.forEach(t => t.classList.remove('active'));
           trigger.classList.add('active');
+          
+          // Add animation class
+          trigger.classList.add('pulse');
+          setTimeout(() => trigger.classList.remove('pulse'), 500);
           
           // Show active content
           batchTabContents.forEach(content => {
@@ -1450,55 +1739,45 @@
       // File input events
       importBtn.addEventListener('click', () => {
         fileInput.click();
-        addClickEffect(importBtn);
+        importBtn.classList.add('pulse');
+        setTimeout(() => importBtn.classList.remove('pulse'), 500);
       });
       
       changeImageBtn.addEventListener('click', () => {
         fileInput.click();
-        addClickEffect(changeImageBtn);
+        changeImageBtn.classList.add('pulse');
+        setTimeout(() => changeImageBtn.classList.remove('pulse'), 500);
       });
       
       fileInput.addEventListener('change', handleFileChange);
       
       // Dropzone events
-      dropzone.addEventListener('click', () => {
-        fileInput.click();
-        addClickEffect(dropzone);
-      });
-      
+      dropzone.addEventListener('click', () => fileInput.click());
       dropzone.addEventListener('dragover', handleDragOver);
       dropzone.addEventListener('drop', handleDrop);
       
       // Button events
-      beforeAfterBtn.addEventListener('click', () => {
-        toggleBeforeAfter();
-        addClickEffect(beforeAfterBtn);
+      beforeAfterBtn.addEventListener('click', toggleBeforeAfter);
+      resetBtn.addEventListener('click', resetAdjustments);
+      saveBtn.addEventListener('click', saveImage);
+      removeBgBtn.addEventListener('click', removeBackground);
+      upscaleBtn.addEventListener('click', upscaleImage);
+      autoEnhanceBtn.addEventListener('click', autoEnhance);
+      
+      // Preset events
+      savePresetBtn.addEventListener('click', () => {
+        savePresetForm.style.display = 'block';
+        savePresetBtn.classList.add('pulse');
+        setTimeout(() => savePresetBtn.classList.remove('pulse'), 500);
       });
       
-      resetBtn.addEventListener('click', () => {
-        resetAdjustments();
-        addClickEffect(resetBtn);
+      confirmSavePresetBtn.addEventListener('click', savePreset);
+      cancelSavePresetBtn.addEventListener('click', () => {
+        savePresetForm.style.display = 'none';
       });
       
-      saveBtn.addEventListener('click', () => {
-        saveImage();
-        addClickEffect(saveBtn);
-      });
-      
-      removeBgBtn.addEventListener('click', () => {
-        removeBackground();
-        addClickEffect(removeBgBtn);
-      });
-      
-      upscaleBtn.addEventListener('click', () => {
-        upscaleImage();
-        addClickEffect(upscaleBtn);
-      });
-      
-      autoEnhanceBtn.addEventListener('click', () => {
-        autoEnhance();
-        addClickEffect(autoEnhanceBtn);
-      });
+      // Initialize presets
+      renderPresets();
       
       // Slider events
       Object.keys(sliders).forEach(key => {
@@ -1512,47 +1791,65 @@
       // Batch events
       addBatchImagesBtn.addEventListener('click', () => {
         batchFileInput.click();
-        addClickEffect(addBatchImagesBtn);
+        addBatchImagesBtn.classList.add('pulse');
+        setTimeout(() => addBatchImagesBtn.classList.remove('pulse'), 500);
       });
       
       batchFileInput.addEventListener('change', handleBatchFileChange);
-      batchDropzone.addEventListener('click', () => {
-        batchFileInput.click();
-        addClickEffect(batchDropzone);
-      });
-      
+      batchDropzone.addEventListener('click', () => batchFileInput.click());
       batchDropzone.addEventListener('dragover', handleDragOver);
       batchDropzone.addEventListener('drop', handleBatchDrop);
       
       selectAllBtn.addEventListener('click', () => {
         selectAllBatchImages();
-        addClickEffect(selectAllBtn);
+        selectAllBtn.classList.add('pulse');
+        setTimeout(() => selectAllBtn.classList.remove('pulse'), 500);
       });
       
       deselectAllBtn.addEventListener('click', () => {
         deselectAllBatchImages();
-        addClickEffect(deselectAllBtn);
+        deselectAllBtn.classList.add('pulse');
+        setTimeout(() => deselectAllBtn.classList.remove('pulse'), 500);
       });
       
       processBatchBtn.addEventListener('click', () => {
         processBatchImages();
-        addClickEffect(processBatchBtn);
+        processBatchBtn.classList.add('pulse');
+        setTimeout(() => processBatchBtn.classList.remove('pulse'), 500);
       });
       
       processBatchBtnBottom.addEventListener('click', () => {
         processBatchImages();
-        addClickEffect(processBatchBtnBottom);
+        processBatchBtnBottom.classList.add('pulse');
+        setTimeout(() => processBatchBtnBottom.classList.remove('pulse'), 500);
       });
       
       saveBatchBtn.addEventListener('click', () => {
         saveBatchImages();
-        addClickEffect(saveBatchBtn);
+        saveBatchBtn.classList.add('pulse');
+        setTimeout(() => saveBatchBtn.classList.remove('pulse'), 500);
       });
       
       batchAutoEnhanceBtn.addEventListener('click', () => {
         batchAutoEnhance();
-        addClickEffect(batchAutoEnhanceBtn);
+        batchAutoEnhanceBtn.classList.add('pulse');
+        setTimeout(() => batchAutoEnhanceBtn.classList.remove('pulse'), 500);
       });
+      
+      // Batch preset events
+      saveBatchPresetBtn.addEventListener('click', () => {
+        saveBatchPresetForm.style.display = 'block';
+        saveBatchPresetBtn.classList.add('pulse');
+        setTimeout(() => saveBatchPresetBtn.classList.remove('pulse'), 500);
+      });
+      
+      confirmSaveBatchPresetBtn.addEventListener('click', saveBatchPreset);
+      cancelSaveBatchPresetBtn.addEventListener('click', () => {
+        saveBatchPresetForm.style.display = 'none';
+      });
+      
+      // Initialize batch presets
+      renderBatchPresets();
       
       // Batch sliders
       Object.keys(batchSliders).forEach(key => {
@@ -1565,11 +1862,19 @@
       // Batch checkboxes
       batchRemoveBg.addEventListener('change', (e) => {
         batchSettings.removeBackground = e.target.checked;
+        if (e.target.checked) {
+          batchRemoveBg.parentElement.classList.add('pulse');
+          setTimeout(() => batchRemoveBg.parentElement.classList.remove('pulse'), 500);
+        }
       });
       
       batchResize.addEventListener('change', (e) => {
         batchSettings.resize = e.target.checked;
         resizeInputs.style.display = e.target.checked ? 'grid' : 'none';
+        if (e.target.checked) {
+          batchResize.parentElement.classList.add('pulse');
+          setTimeout(() => batchResize.parentElement.classList.remove('pulse'), 500);
+        }
       });
       
       resizeWidth.addEventListener('input', (e) => {
@@ -1581,12 +1886,152 @@
       });
     }
     
-    // Add click effect to elements
-    function addClickEffect(element) {
-      element.classList.add('pulse');
+    // Toast notification
+    function showToast(message, type = 'info') {
+      toastMessage.textContent = message;
+      toast.className = `toast toast-${type} show`;
+      
       setTimeout(() => {
-        element.classList.remove('pulse');
-      }, 500);
+        toast.className = toast.className.replace('show', '');
+      }, 3000);
+    }
+    
+    // Presets
+    function renderPresets() {
+      presetsGrid.innerHTML = '';
+      
+      Object.keys(presets).forEach(presetName => {
+        const presetItem = document.createElement('div');
+        presetItem.className = 'preset-item';
+        presetItem.dataset.preset = presetName;
+        
+        const presetNameEl = document.createElement('div');
+        presetNameEl.className = 'preset-name';
+        presetNameEl.textContent = presetName;
+        
+        presetItem.appendChild(presetNameEl);
+        presetItem.addEventListener('click', () => applyPreset(presetName));
+        
+        presetsGrid.appendChild(presetItem);
+      });
+    }
+    
+    function renderBatchPresets() {
+      batchPresetsGrid.innerHTML = '';
+      
+      Object.keys(batchPresets).forEach(presetName => {
+        const presetItem = document.createElement('div');
+        presetItem.className = 'preset-item';
+        presetItem.dataset.preset = presetName;
+        
+        const presetNameEl = document.createElement('div');
+        presetNameEl.className = 'preset-name';
+        presetNameEl.textContent = presetName;
+        
+        presetItem.appendChild(presetNameEl);
+        presetItem.addEventListener('click', () => applyBatchPreset(presetName));
+        
+        batchPresetsGrid.appendChild(presetItem);
+      });
+    }
+    
+    function applyPreset(presetName) {
+      if (!presets[presetName]) return;
+      
+      // Apply preset values
+      adjustments = { ...presets[presetName] };
+      
+      // Update sliders
+      Object.keys(sliders).forEach(key => {
+        sliders[key].value = adjustments[key];
+        sliderValues[key].textContent = adjustments[key];
+      });
+      
+      // Apply adjustments
+      applyAdjustments();
+      
+      // Highlight active preset
+      const presetItems = presetsGrid.querySelectorAll('.preset-item');
+      presetItems.forEach(item => {
+        if (item.dataset.preset === presetName) {
+          item.classList.add('active', 'pulse');
+          setTimeout(() => item.classList.remove('pulse'), 500);
+        } else {
+          item.classList.remove('active');
+        }
+      });
+      
+      showToast(`Applied "${presetName}" preset`, 'success');
+    }
+    
+    function applyBatchPreset(presetName) {
+      if (!batchPresets[presetName]) return;
+      
+      // Apply preset values
+      Object.keys(batchPresets[presetName]).forEach(key => {
+        batchSettings[key] = batchPresets[presetName][key];
+      });
+      
+      // Update sliders
+      Object.keys(batchSliders).forEach(key => {
+        if (batchSliders[key]) {
+          batchSliders[key].value = batchSettings[key];
+          batchSliderValues[key].textContent = batchSettings[key];
+        }
+      });
+      
+      // Highlight active preset
+      const presetItems = batchPresetsGrid.querySelectorAll('.preset-item');
+      presetItems.forEach(item => {
+        if (item.dataset.preset === presetName) {
+          item.classList.add('active', 'pulse');
+          setTimeout(() => item.classList.remove('pulse'), 500);
+        } else {
+          item.classList.remove('active');
+        }
+      });
+      
+      showToast(`Applied "${presetName}" batch preset`, 'success');
+    }
+    
+    function savePreset() {
+      const presetName = presetNameInput.value.trim();
+      
+      if (!presetName) {
+        showToast('Please enter a preset name', 'error');
+        return;
+      }
+      
+      // Save preset
+      presets[presetName] = { ...adjustments };
+      localStorage.setItem('photoEditorPresets', JSON.stringify(presets));
+      
+      // Update UI
+      renderPresets();
+      savePresetForm.style.display = 'none';
+      presetNameInput.value = '';
+      
+      showToast(`Saved preset "${presetName}"`, 'success');
+    }
+    
+    function saveBatchPreset() {
+      const presetName = batchPresetNameInput.value.trim();
+      
+      if (!presetName) {
+        showToast('Please enter a preset name', 'error');
+        return;
+      }
+      
+      // Save preset
+      batchPresets[presetName] = { ...batchSettings };
+      localStorage.setItem('photoEditorBatchPresets', JSON.stringify(batchPresets));
+      
+      // Update UI
+      renderBatchPresets();
+      saveBatchPresetForm.style.display = 'none';
+      batchPresetNameInput.value = '';
+      
+      showToast(`Saved batch preset "${presetName}"`, 'success');
     }
     
     // File handling
@@ -1630,6 +2075,9 @@
         
         // Reset adjustments
         resetAdjustments();
+        
+        // Show success toast
+        showToast('Image loaded successfully', 'success');
       };
       
       reader.readAsDataURL(file);
@@ -1671,6 +2119,7 @@
           loadingOverlay.style.display = 'none';
         };
         
+        img.crossOrigin = "anonymous";
         img.src = originalImage;
       }, 50);
     }
@@ -1744,10 +2193,14 @@
         beforeImage.src = originalImage;
         afterImage.src = processedImage || originalImage;
         beforeAfterBtn.textContent = 'Hide Before/After';
+        beforeAfterBtn.classList.add('pulse');
+        setTimeout(() => beforeAfterBtn.classList.remove('pulse'), 500);
       } else {
         imagePreview.style.display = 'block';
         beforeAfterContainer.style.display = 'none';
         beforeAfterBtn.textContent = 'Show Before/After';
+        beforeAfterBtn.classList.add('pulse');
+        setTimeout(() => beforeAfterBtn.classList.remove('pulse'), 500);
       }
     }
     
@@ -1777,6 +2230,12 @@
         imagePreview.src = originalImage;
         processedImage = null;
       }
+      
+      // Add animation
+      resetBtn.classList.add('shake');
+      setTimeout(() => resetBtn.classList.remove('shake'), 500);
+      
+      showToast('Adjustments reset', 'info');
     }
     
     function enableControls() {
@@ -1792,6 +2251,7 @@
       removeBgBtn.disabled = false;
       upscaleBtn.disabled = false;
       autoEnhanceBtn.disabled = false;
+      savePresetBtn.disabled = false;
     }
     
     function saveImage() {
@@ -1801,6 +2261,11 @@
       link.download = 'edited-image.jpg';
       link.href = processedImage;
       link.click();
+      
+      saveBtn.classList.add('pulse');
+      setTimeout(() => saveBtn.classList.remove('pulse'), 500);
+      
+      showToast('Image saved successfully', 'success');
     }
     
     function removeBackground() {
@@ -1838,10 +2303,16 @@
           imagePreview.src = processedImage;
           
           loadingOverlay.style.display = 'none';
+          
+          showToast('Background removed', 'success');
         };
         
+        img.crossOrigin = "anonymous";
         img.src = originalImage;
       }, 1500);
+      
+      removeBgBtn.classList.add('pulse');
+      setTimeout(() => removeBgBtn.classList.remove('pulse'), 500);
     }
     
     function upscaleImage() {
@@ -1881,10 +2352,16 @@
           imagePreview.src = processedImage;
           
           loadingOverlay.style.display = 'none';
+          
+          showToast('Image upscaled 2x', 'success');
         };
         
+        img.crossOrigin = "anonymous";
         img.src = originalImage;
       }, 1500);
+      
+      upscaleBtn.classList.add('pulse');
+      setTimeout(() => upscaleBtn.classList.remove('pulse'), 500);
     }
     
     function autoEnhance() {
@@ -1910,33 +2387,11 @@
       
       // Apply adjustments
       applyAdjustments();
-    }
-    
-    function batchAutoEnhance() {
-      // Apply preset adjustments for auto enhancement
-      batchSettings = {
-        ...batchSettings,
-        brightness: 10,
-        exposure: 5,
-        contrast: 15,
-        highlights: -5,
-        shadows: 10,
-        vignette: 15,
-        saturation: 10,
-        warmth: 5,
-        tint: 0,
-        sharpness: 20
-      };
       
-      // Update sliders
-      Object.keys(batchSliders).forEach(key => {
-        if (batchSliders[key]) {
-          batchSliders[key].value = batchSettings[key];
-          if (batchSliderValues[key]) {
-            batchSliderValues[key].textContent = batchSettings[key];
-          }
-        }
-      });
+      autoEnhanceBtn.classList.add('pulse');
+      setTimeout(() => autoEnhanceBtn.classList.remove('pulse'), 500);
+      
+      showToast('Auto enhancement applied', 'success');
     }
     
     // Batch processing functions
@@ -1982,6 +2437,8 @@
           reader.readAsDataURL(file);
         }
       });
+      
+      showToast(`${files.length} images added to batch`, 'success');
     }
     
     function renderBatchImages() {
@@ -2005,25 +2462,19 @@
         actions.className = 'batch-item-actions';
         
         const selectBtn = document.createElement('button');
-        selectBtn.className = `rounded-full p-1 ${image.selected ? 'bg-purple-500' : 'bg-black/50'}`;
+        selectBtn.className = `batch-select-btn ${image.selected ? 'selected' : ''}`;
         selectBtn.innerHTML = image.selected ? 
           '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' :
           '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
         
-        selectBtn.addEventListener('click', () => {
-          toggleBatchImageSelection(image.id);
-          addClickEffect(selectBtn);
-        });
+        selectBtn.addEventListener('click', () => toggleBatchImageSelection(image.id));
         actions.appendChild(selectBtn);
         
         // Add remove button
         const removeBtn = document.createElement('div');
         removeBtn.className = 'batch-item-remove';
         removeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
-        removeBtn.addEventListener('click', () => {
-          removeBatchImage(image.id);
-          addClickEffect(removeBtn);
-        });
+        removeBtn.addEventListener('click', () => removeBatchImage(image.id));
         
         // Add processed badge if processed
         if (image.processed) {
@@ -2048,18 +2499,31 @@
       
       renderBatchImages();
       updateBatchButtons();
+      
+      // Find the item and add animation
+      const item = batchGrid.querySelector(`[data-id="${id}"]`);
+      if (item) {
+        item.classList.add('pulse');
+        setTimeout(() => item.classList.remove('pulse'), 500);
+      }
     }
     
     function removeBatchImage(id) {
-      batchImages = batchImages.filter(img => img.id !== id);
-      
-      renderBatchImages();
-      updateBatchButtons();
-      
-      // Show dropzone if no images
-      if (batchImages.length === 0) {
-        batchDropzone.style.display = 'flex';
-        batchImagesContainer.style.display = 'none';
+      // Find the item and add animation before removing
+      const item = batchGrid.querySelector(`[data-id="${id}"]`);
+      if (item) {
+        item.classList.add('shake');
+        setTimeout(() => {
+          batchImages = batchImages.filter(img => img.id !== id);
+          renderBatchImages();
+          updateBatchButtons();
+          
+          // Show dropzone if no images
+          if (batchImages.length === 0) {
+            batchDropzone.style.display = 'flex';
+            batchImagesContainer.style.display = 'none';
+          }
+        }, 300);
       }
     }
     
@@ -2067,6 +2531,13 @@
       batchImages = batchImages.map(img => ({ ...img, selected: true }));
       renderBatchImages();
       updateBatchButtons();
+      
+      // Add animation to all items
+      const items = batchGrid.querySelectorAll('.batch-item');
+      items.forEach(item => {
+        item.classList.add('pulse');
+        setTimeout(() => item.classList.remove('pulse'), 500);
+      });
     }
     
     function deselectAllBatchImages() {
@@ -2082,6 +2553,33 @@
       processBatchBtn.disabled = !hasSelectedImages;
       processBatchBtnBottom.disabled = !hasSelectedImages;
       saveBatchBtn.disabled = !hasProcessedImages;
+    }
+    
+    function batchAutoEnhance() {
+      // Apply auto enhancement settings
+      batchSettings = {
+        ...batchSettings,
+        brightness: 10,
+        exposure: 5,
+        contrast: 15,
+        highlights: -5,
+        shadows: 10,
+        vignette: 15,
+        saturation: 10,
+        warmth: 5,
+        tint: 0,
+        sharpness: 20
+      };
+      
+      // Update sliders
+      Object.keys(batchSliders).forEach(key => {
+        if (batchSliders[key]) {
+          batchSliders[key].value = batchSettings[key];
+          batchSliderValues[key].textContent = batchSettings[key];
+        }
+      });
+      
+      showToast('Auto enhancement settings applied to batch', 'success');
     }
     
     function processBatchImages() {
@@ -2140,14 +2638,19 @@
             renderBatchImages();
             updateBatchButtons();
             loadingOverlay.style.display = 'none';
+            
+            showToast(`${processedCount} images processed successfully`, 'success');
           }
         };
         
+        img.crossOrigin = "anonymous";
         img.src = image.preview;
       });
     }
     
     function saveBatchImages() {
+      const processedCount = batchImages.filter(image => image.processed && image.selected).length;
+      
       batchImages.forEach(image => {
         if (image.processed && image.selected) {
           const link = document.createElement('a');
@@ -2156,6 +2659,8 @@
           link.click();
         }
       });
+      
+      showToast(`${processedCount} images saved`, 'success');
     }
     
     // Initialize the app
