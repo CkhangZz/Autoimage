@@ -78,11 +78,18 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: background-color 0.2s;
+      transition: all 0.2s ease;
     }
 
     .btn:hover {
       background-color: rgba(0, 0, 0, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .btn-primary {
@@ -111,11 +118,16 @@
       padding: 0.75rem;
       text-align: center;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: all 0.3s ease;
+    }
+
+    .tab-trigger:hover {
+      background-color: rgba(147, 51, 234, 0.3);
     }
 
     .tab-trigger.active {
       background-color: #9333ea;
+      transform: scale(1.05);
     }
 
     .tab-content {
@@ -124,6 +136,7 @@
 
     .tab-content.active {
       display: block;
+      animation: fadeIn 0.3s ease-out;
     }
 
     /* Grid layout */
@@ -145,6 +158,11 @@
       padding: 1rem;
       display: flex;
       flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .editor-container:hover {
+      box-shadow: 0 0 15px rgba(147, 51, 234, 0.3);
     }
 
     .image-container {
@@ -167,6 +185,12 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dropzone:hover {
+      border-color: #9333ea;
+      background-color: rgba(147, 51, 234, 0.1);
     }
 
     .dropzone svg {
@@ -174,6 +198,12 @@
       height: 4rem;
       margin-bottom: 1rem;
       color: rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .dropzone:hover svg {
+      transform: scale(1.1);
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .dropzone p {
@@ -185,6 +215,7 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      transition: all 0.3s ease;
     }
 
     .before-after-container {
@@ -263,6 +294,11 @@
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 0.5rem;
       padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .controls-panel:hover {
+      box-shadow: 0 0 15px rgba(147, 51, 234, 0.3);
     }
 
     .controls-tabs {
@@ -307,6 +343,12 @@
       background: rgba(255, 255, 255, 0.2);
       border-radius: 0.125rem;
       outline: none;
+      transition: all 0.2s;
+    }
+
+    .slider:hover {
+      height: 0.35rem;
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .slider::-webkit-slider-thumb {
@@ -316,6 +358,13 @@
       border-radius: 50%;
       background: #9333ea;
       cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .slider::-webkit-slider-thumb:hover {
+      width: 1.2rem;
+      height: 1.2rem;
+      box-shadow: 0 0 5px rgba(147, 51, 234, 0.8);
     }
 
     .slider::-moz-range-thumb {
@@ -325,6 +374,13 @@
       background: #9333ea;
       cursor: pointer;
       border: none;
+      transition: all 0.2s;
+    }
+
+    .slider::-moz-range-thumb:hover {
+      width: 1.2rem;
+      height: 1.2rem;
+      box-shadow: 0 0 5px rgba(147, 51, 234, 0.8);
     }
 
     /* Effects section */
@@ -351,10 +407,16 @@
       background-color: rgba(0, 0, 0, 0.5);
       cursor: pointer;
       position: relative;
+      transition: all 0.2s;
+    }
+
+    .checkbox:hover {
+      border-color: rgba(147, 51, 234, 0.5);
     }
 
     .checkbox:checked {
       background-color: #9333ea;
+      border-color: #9333ea;
     }
 
     .checkbox:checked::after {
@@ -383,7 +445,12 @@
       border-radius: 0.5rem;
       overflow: hidden;
       border: 2px solid transparent;
-      transition: border-color 0.2s;
+      transition: all 0.3s ease;
+    }
+
+    .batch-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
     .batch-item.selected {
@@ -399,6 +466,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .batch-item:hover .batch-image {
+      transform: scale(1.05);
     }
 
     .batch-item-actions {
@@ -407,6 +479,14 @@
       left: 0.5rem;
       display: flex;
       gap: 0.25rem;
+    }
+
+    .batch-item-actions button {
+      transition: all 0.2s ease;
+    }
+
+    .batch-item-actions button:hover {
+      transform: scale(1.2);
     }
 
     .batch-item-remove {
@@ -422,6 +502,12 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .batch-item-remove:hover {
+      background-color: rgba(220, 38, 38, 1);
+      transform: scale(1.2);
     }
 
     .processed-badge {
@@ -436,6 +522,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .processed-badge:hover {
+      transform: scale(1.2);
     }
 
     .resize-inputs {
@@ -459,6 +550,13 @@
       border-radius: 0.25rem;
       padding: 0.25rem 0.5rem;
       color: white;
+      transition: all 0.2s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #9333ea;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.3);
     }
 
     /* Animations */
@@ -480,6 +578,16 @@
       animation: slideUp 0.3s ease-out forwards;
     }
 
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse {
+      animation: pulse 0.5s ease-in-out;
+    }
+
     /* Hide file input */
     .file-input {
       display: none;
@@ -495,6 +603,29 @@
       font-size: 1.25rem;
       font-weight: bold;
       margin-bottom: 1rem;
+    }
+
+    /* Batch tabs */
+    .batch-controls-tabs {
+      margin-bottom: 1rem;
+    }
+
+    .batch-controls-tabs-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 0.375rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .batch-controls-tab-content {
+      display: none;
+    }
+
+    .batch-controls-tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
     }
 
     /* Responsive adjustments */
@@ -702,6 +833,7 @@
               <div class="slider-header">
                 <div class="slider-label">
                   <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-  stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                   </svg>
                   <span>Vignette</span>
@@ -883,99 +1015,218 @@
         <div class="controls-panel">
           <h2 class="section-title">Batch Settings</h2>
           
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-white font-medium mb-4">Adjustments</h3>
-              
-              <div class="slider-container">
-                <div class="slider-header">
-                  <div class="slider-label">
-                    <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="5"></circle>
-                      <line x1="12" y1="1" x2="12" y2="3"></line>
-                      <line x1="12" y1="21" x2="12" y2="23"></line>
-                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                      <line x1="1" y1="12" x2="3" y2="12"></line>
-                      <line x1="21" y1="12" x2="23" y2="12"></line>
-                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <span>Brightness</span>
-                  </div>
-                  <span id="batch-brightness-value">0</span>
-                </div>
-                <input type="range" id="batch-brightness-slider" class="slider" min="-100" max="100" value="0">
-              </div>
-              
-              <div class="slider-container">
-                <div class="slider-header">
-                  <div class="slider-label">
-                    <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <path d="M12 18a6 6 0 0 0 0-12v12z"></path>
-                    </svg>
-                    <span>Contrast</span>
-                  </div>
-                  <span id="batch-contrast-value">0</span>
-                </div>
-                <input type="range" id="batch-contrast-slider" class="slider" min="-100" max="100" value="0">
-              </div>
-              
-              <div class="slider-container">
-                <div class="slider-header">
-                  <div class="slider-label">
-                    <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="13.5" cy="6.5" r="2.5"></circle>
-                      <circle cx="17.5" cy="10.5" r="2.5"></circle>
-                      <circle cx="8.5" cy="7.5" r="2.5"></circle>
-                      <circle cx="6.5" cy="12.5" r="2.5"></circle>
-                      <path d="M12 22v-6"></path>
-                      <path d="M20 22v-6"></path>
-                      <path d="M4 22v-6"></path>
-                      <path d="M12 16H4"></path>
-                      <path d="M20 16h-8"></path>
-                    </svg>
-                    <span>Saturation</span>
-                  </div>
-                  <span id="batch-saturation-value">0</span>
-                </div>
-                <input type="range" id="batch-saturation-slider" class="slider" min="-100" max="100" value="0">
-              </div>
+          <div class="batch-controls-tabs">
+            <div class="batch-controls-tabs-list">
+              <div class="tab-trigger active" data-batch-tab="adjust">Adjust</div>
+              <div class="tab-trigger" data-batch-tab="color">Color</div>
+              <div class="tab-trigger" data-batch-tab="effects">Effects</div>
             </div>
-            
-            <div>
-              <h3 class="text-white font-medium mb-4">Effects</h3>
-              
-              <div class="checkbox-container">
-                <input type="checkbox" id="batch-remove-bg" class="checkbox">
-                <label for="batch-remove-bg">Remove Background</label>
-              </div>
-              
-              <div class="checkbox-container">
-                <input type="checkbox" id="batch-resize" class="checkbox">
-                <label for="batch-resize">Resize Images</label>
-              </div>
-              
-              <div id="resize-inputs" class="resize-inputs" style="display: none;">
-                <div class="input-group">
-                  <label for="width">Width</label>
-                  <input type="number" id="resize-width" value="1920">
-                </div>
-                <div class="input-group">
-                  <label for="height">Height</label>
-                  <input type="number" id="resize-height" value="1080">
-                </div>
-              </div>
-            </div>
-            
-            <button id="process-batch-btn-bottom" class="btn btn-primary" style="width: 100%;" disabled>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              Process Selected Images
-            </button>
           </div>
+          
+          <!-- Batch Adjust Tab -->
+          <div id="batch-adjust-tab" class="batch-controls-tab-content active">
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                  <span>Brightness</span>
+                </div>
+                <span id="batch-brightness-value">0</span>
+              </div>
+              <input type="range" id="batch-brightness-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                  </svg>
+                  <span>Exposure</span>
+                </div>
+                <span id="batch-exposure-value">0</span>
+              </div>
+              <input type="range" id="batch-exposure-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 18a6 6 0 0 0 0-12v12z"></path>
+                  </svg>
+                  <span>Contrast</span>
+                </div>
+                <span id="batch-contrast-value">0</span>
+              </div>
+              <input type="range" id="batch-contrast-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  </svg>
+                  <span>Highlights</span>
+                </div>
+                <span id="batch-highlights-value">0</span>
+              </div>
+              <input type="range" id="batch-highlights-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"></path>
+                    <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                  </svg>
+                  <span>Shadows</span>
+                </div>
+                <span id="batch-shadows-value">0</span>
+              </div>
+              <input type="range" id="batch-shadows-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  </svg>
+                  <span>Vignette</span>
+                </div>
+                <span id="batch-vignette-value">0</span>
+              </div>
+              <input type="range" id="batch-vignette-slider" class="slider" min="0" max="100" value="0">
+            </div>
+          </div>
+          
+          <!-- Batch Color Tab -->
+          <div id="batch-color-tab" class="batch-controls-tab-content">
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="13.5" cy="6.5" r="2.5"></circle>
+                    <circle cx="17.5" cy="10.5" r="2.5"></circle>
+                    <circle cx="8.5" cy="7.5" r="2.5"></circle>
+                    <circle cx="6.5" cy="12.5" r="2.5"></circle>
+                    <path d="M12 22v-6"></path>
+                    <path d="M20 22v-6"></path>
+                    <path d="M4 22v-6"></path>
+                    <path d="M12 16H4"></path>
+                    <path d="M20 16h-8"></path>
+                  </svg>
+                  <span>Saturation</span>
+                </div>
+                <span id="batch-saturation-value">0</span>
+              </div>
+              <input type="range" id="batch-saturation-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+                    <path d="M10 12a2 2 0 0 1 4 0c0 1.87-1.5 2.5-2 4"></path>
+                    <path d="M12 18h.01"></path>
+                  </svg>
+                  <span>Warmth</span>
+                </div>
+                <span id="batch-warmth-value">0</span>
+              </div>
+              <input type="range" id="batch-warmth-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 16a3 3 0 0 1 0 6 3 3 0 0 1 0-6z"></path>
+                    <path d="M21 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 0-6z"></path>
+                    <path d="M7 10a3 3 0 0 1 0 6 3 3 0 0 1 0-6z"></path>
+                    <path d="M21 8a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 0-6z"></path>
+                  </svg>
+                  <span>Tint</span>
+                </div>
+                <span id="batch-tint-value">0</span>
+              </div>
+              <input type="range" id="batch-tint-slider" class="slider" min="-100" max="100" value="0">
+            </div>
+            
+            <div class="slider-container">
+              <div class="slider-header">
+                <div class="slider-label">
+                  <svg class="slider-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+                    <line x1="3" y1="22" x2="21" y2="22"></line>
+                  </svg>
+                  <span>Sharpness</span>
+                </div>
+                <span id="batch-sharpness-value">0</span>
+              </div>
+              <input type="range" id="batch-sharpness-slider" class="slider" min="0" max="100" value="0">
+            </div>
+          </div>
+          
+          <!-- Batch Effects Tab -->
+          <div id="batch-effects-tab" class="batch-controls-tab-content">
+            <div class="checkbox-container">
+              <input type="checkbox" id="batch-remove-bg" class="checkbox">
+              <label for="batch-remove-bg">Remove Background</label>
+            </div>
+            
+            <div class="checkbox-container">
+              <input type="checkbox" id="batch-resize" class="checkbox">
+              <label for="batch-resize">Resize Images</label>
+            </div>
+            
+            <div id="resize-inputs" class="resize-inputs" style="display: none;">
+              <div class="input-group">
+                <label for="width">Width</label>
+                <input type="number" id="resize-width" value="1920">
+              </div>
+              <div class="input-group">
+                <label for="height">Height</label>
+                <input type="number" id="resize-height" value="1080">
+              </div>
+            </div>
+            
+            <div style="margin-top: 1rem;">
+              <h3 class="section-title">Auto Enhance</h3>
+              <button id="batch-auto-enhance-btn" class="btn" style="width: 100%;">
+                Apply Auto Enhancement
+              </button>
+            </div>
+          </div>
+          
+          <button id="process-batch-btn-bottom" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Process Selected Images
+          </button>
         </div>
       </div>
     </div>
@@ -1014,6 +1265,7 @@
     const processBatchBtn = document.getElementById('process-batch-btn');
     const processBatchBtnBottom = document.getElementById('process-batch-btn-bottom');
     const saveBatchBtn = document.getElementById('save-batch-btn');
+    const batchAutoEnhanceBtn = document.getElementById('batch-auto-enhance-btn');
     
     // Sliders
     const sliders = {
@@ -1045,14 +1297,28 @@
     // Batch sliders
     const batchSliders = {
       brightness: document.getElementById('batch-brightness-slider'),
+      exposure: document.getElementById('batch-exposure-slider'),
       contrast: document.getElementById('batch-contrast-slider'),
-      saturation: document.getElementById('batch-saturation-slider')
+      highlights: document.getElementById('batch-highlights-slider'),
+      shadows: document.getElementById('batch-shadows-slider'),
+      vignette: document.getElementById('batch-vignette-slider'),
+      saturation: document.getElementById('batch-saturation-slider'),
+      warmth: document.getElementById('batch-warmth-slider'),
+      tint: document.getElementById('batch-tint-slider'),
+      sharpness: document.getElementById('batch-sharpness-slider')
     };
     
     const batchSliderValues = {
       brightness: document.getElementById('batch-brightness-value'),
+      exposure: document.getElementById('batch-exposure-value'),
       contrast: document.getElementById('batch-contrast-value'),
-      saturation: document.getElementById('batch-saturation-value')
+      highlights: document.getElementById('batch-highlights-value'),
+      shadows: document.getElementById('batch-shadows-value'),
+      vignette: document.getElementById('batch-vignette-value'),
+      saturation: document.getElementById('batch-saturation-value'),
+      warmth: document.getElementById('batch-warmth-value'),
+      tint: document.getElementById('batch-tint-value'),
+      sharpness: document.getElementById('batch-sharpness-value')
     };
     
     const batchRemoveBg = document.getElementById('batch-remove-bg');
@@ -1066,6 +1332,8 @@
     const tabContents = document.querySelectorAll('.tab-content');
     const controlsTabTriggers = document.querySelectorAll('[data-controls-tab]');
     const controlsTabContents = document.querySelectorAll('.controls-tab-content');
+    const batchTabTriggers = document.querySelectorAll('[data-batch-tab]');
+    const batchTabContents = document.querySelectorAll('.batch-controls-tab-content');
     
     // State
     let originalImage = null;
@@ -1087,8 +1355,15 @@
     let batchImages = [];
     let batchSettings = {
       brightness: 0,
+      exposure: 0,
       contrast: 0,
+      highlights: 0,
+      shadows: 0,
+      vignette: 0,
       saturation: 0,
+      warmth: 0,
+      tint: 0,
+      sharpness: 0,
       removeBackground: false,
       resize: false,
       resizeWidth: 1920,
@@ -1101,6 +1376,12 @@
       tabTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
           const tabId = trigger.getAttribute('data-tab');
+          
+          // Add pulse animation
+          trigger.classList.add('pulse');
+          setTimeout(() => {
+            trigger.classList.remove('pulse');
+          }, 500);
           
           // Update active trigger
           tabTriggers.forEach(t => t.classList.remove('active'));
@@ -1121,6 +1402,12 @@
         trigger.addEventListener('click', () => {
           const tabId = trigger.getAttribute('data-controls-tab');
           
+          // Add pulse animation
+          trigger.classList.add('pulse');
+          setTimeout(() => {
+            trigger.classList.remove('pulse');
+          }, 500);
+          
           // Update active trigger
           controlsTabTriggers.forEach(t => t.classList.remove('active'));
           trigger.classList.add('active');
@@ -1135,23 +1422,83 @@
         });
       });
       
+      // Batch tab navigation
+      batchTabTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const tabId = trigger.getAttribute('data-batch-tab');
+          
+          // Add pulse animation
+          trigger.classList.add('pulse');
+          setTimeout(() => {
+            trigger.classList.remove('pulse');
+          }, 500);
+          
+          // Update active trigger
+          batchTabTriggers.forEach(t => t.classList.remove('active'));
+          trigger.classList.add('active');
+          
+          // Show active content
+          batchTabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === `batch-${tabId}-tab`) {
+              content.classList.add('active');
+            }
+          });
+        });
+      });
+      
       // File input events
-      importBtn.addEventListener('click', () => fileInput.click());
-      changeImageBtn.addEventListener('click', () => fileInput.click());
+      importBtn.addEventListener('click', () => {
+        fileInput.click();
+        addClickEffect(importBtn);
+      });
+      
+      changeImageBtn.addEventListener('click', () => {
+        fileInput.click();
+        addClickEffect(changeImageBtn);
+      });
+      
       fileInput.addEventListener('change', handleFileChange);
       
       // Dropzone events
-      dropzone.addEventListener('click', () => fileInput.click());
+      dropzone.addEventListener('click', () => {
+        fileInput.click();
+        addClickEffect(dropzone);
+      });
+      
       dropzone.addEventListener('dragover', handleDragOver);
       dropzone.addEventListener('drop', handleDrop);
       
       // Button events
-      beforeAfterBtn.addEventListener('click', toggleBeforeAfter);
-      resetBtn.addEventListener('click', resetAdjustments);
-      saveBtn.addEventListener('click', saveImage);
-      removeBgBtn.addEventListener('click', removeBackground);
-      upscaleBtn.addEventListener('click', upscaleImage);
-      autoEnhanceBtn.addEventListener('click', autoEnhance);
+      beforeAfterBtn.addEventListener('click', () => {
+        toggleBeforeAfter();
+        addClickEffect(beforeAfterBtn);
+      });
+      
+      resetBtn.addEventListener('click', () => {
+        resetAdjustments();
+        addClickEffect(resetBtn);
+      });
+      
+      saveBtn.addEventListener('click', () => {
+        saveImage();
+        addClickEffect(saveBtn);
+      });
+      
+      removeBgBtn.addEventListener('click', () => {
+        removeBackground();
+        addClickEffect(removeBgBtn);
+      });
+      
+      upscaleBtn.addEventListener('click', () => {
+        upscaleImage();
+        addClickEffect(upscaleBtn);
+      });
+      
+      autoEnhanceBtn.addEventListener('click', () => {
+        autoEnhance();
+        addClickEffect(autoEnhanceBtn);
+      });
       
       // Slider events
       Object.keys(sliders).forEach(key => {
@@ -1163,17 +1510,49 @@
       });
       
       // Batch events
-      addBatchImagesBtn.addEventListener('click', () => batchFileInput.click());
+      addBatchImagesBtn.addEventListener('click', () => {
+        batchFileInput.click();
+        addClickEffect(addBatchImagesBtn);
+      });
+      
       batchFileInput.addEventListener('change', handleBatchFileChange);
-      batchDropzone.addEventListener('click', () => batchFileInput.click());
+      batchDropzone.addEventListener('click', () => {
+        batchFileInput.click();
+        addClickEffect(batchDropzone);
+      });
+      
       batchDropzone.addEventListener('dragover', handleDragOver);
       batchDropzone.addEventListener('drop', handleBatchDrop);
       
-      selectAllBtn.addEventListener('click', selectAllBatchImages);
-      deselectAllBtn.addEventListener('click', deselectAllBatchImages);
-      processBatchBtn.addEventListener('click', processBatchImages);
-      processBatchBtnBottom.addEventListener('click', processBatchImages);
-      saveBatchBtn.addEventListener('click', saveBatchImages);
+      selectAllBtn.addEventListener('click', () => {
+        selectAllBatchImages();
+        addClickEffect(selectAllBtn);
+      });
+      
+      deselectAllBtn.addEventListener('click', () => {
+        deselectAllBatchImages();
+        addClickEffect(deselectAllBtn);
+      });
+      
+      processBatchBtn.addEventListener('click', () => {
+        processBatchImages();
+        addClickEffect(processBatchBtn);
+      });
+      
+      processBatchBtnBottom.addEventListener('click', () => {
+        processBatchImages();
+        addClickEffect(processBatchBtnBottom);
+      });
+      
+      saveBatchBtn.addEventListener('click', () => {
+        saveBatchImages();
+        addClickEffect(saveBatchBtn);
+      });
+      
+      batchAutoEnhanceBtn.addEventListener('click', () => {
+        batchAutoEnhance();
+        addClickEffect(batchAutoEnhanceBtn);
+      });
       
       // Batch sliders
       Object.keys(batchSliders).forEach(key => {
@@ -1200,6 +1579,14 @@
       resizeHeight.addEventListener('input', (e) => {
         batchSettings.resizeHeight = parseInt(e.target.value) || 1080;
       });
+    }
+    
+    // Add click effect to elements
+    function addClickEffect(element) {
+      element.classList.add('pulse');
+      setTimeout(() => {
+        element.classList.remove('pulse');
+      }, 500);
     }
     
     // File handling
@@ -1267,7 +1654,7 @@
           ctx.drawImage(img, 0, 0);
           
           // Apply adjustments
-          applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height);
+          applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height, adjustments);
           
           // Get processed image
           processedImage = editorCanvas.toDataURL('image/jpeg');
@@ -1288,7 +1675,7 @@
       }, 50);
     }
     
-    function applyImageAdjustments(ctx, width, height) {
+    function applyImageAdjustments(ctx, width, height, settings) {
       // Get image data
       const imageData = ctx.getImageData(0, 0, width, height);
       const data = imageData.data;
@@ -1296,30 +1683,37 @@
       // Apply pixel-based adjustments
       for (let i = 0; i < data.length; i += 4) {
         // Brightness
-        data[i] = Math.min(255, Math.max(0, data[i] + adjustments.brightness * 2.55));
-        data[i+1] = Math.min(255, Math.max(0, data[i+1] + adjustments.brightness * 2.55));
-        data[i+2] = Math.min(255, Math.max(0, data[i+2] + adjustments.brightness * 2.55));
+        data[i] = Math.min(255, Math.max(0, data[i] + settings.brightness * 2.55));
+        data[i+1] = Math.min(255, Math.max(0, data[i+1] + settings.brightness * 2.55));
+        data[i+2] = Math.min(255, Math.max(0, data[i+2] + settings.brightness * 2.55));
         
         // Contrast
-        const factor = (259 * (adjustments.contrast + 255)) / (255 * (259 - adjustments.contrast));
+        const factor = (259 * (settings.contrast + 255)) / (255 * (259 - settings.contrast));
         data[i] = Math.min(255, Math.max(0, factor * (data[i] - 128) + 128));
         data[i+1] = Math.min(255, Math.max(0, factor * (data[i+1] - 128) + 128));
         data[i+2] = Math.min(255, Math.max(0, factor * (data[i+2] - 128) + 128));
         
         // Saturation
         const gray = 0.2989 * data[i] + 0.5870 * data[i+1] + 0.1140 * data[i+2];
-        const satFactor = 1 + adjustments.saturation / 100;
+        const satFactor = 1 + settings.saturation / 100;
         data[i] = Math.min(255, Math.max(0, gray + satFactor * (data[i] - gray)));
         data[i+1] = Math.min(255, Math.max(0, gray + satFactor * (data[i+1] - gray)));
         data[i+2] = Math.min(255, Math.max(0, gray + satFactor * (data[i+2] - gray)));
         
         // Warmth (adjust red-blue balance)
-        if (adjustments.warmth > 0) {
-          data[i] = Math.min(255, data[i] + adjustments.warmth * 0.5);
-          data[i+2] = Math.max(0, data[i+2] - adjustments.warmth * 0.5);
-        } else if (adjustments.warmth < 0) {
-          data[i] = Math.max(0, data[i] + adjustments.warmth * 0.5);
-          data[i+2] = Math.min(255, data[i+2] - adjustments.warmth * 0.5);
+        if (settings.warmth > 0) {
+          data[i] = Math.min(255, data[i] + settings.warmth * 0.5);
+          data[i+2] = Math.max(0, data[i+2] - settings.warmth * 0.5);
+        } else if (settings.warmth < 0) {
+          data[i] = Math.max(0, data[i] + settings.warmth * 0.5);
+          data[i+2] = Math.min(255, data[i+2] - settings.warmth * 0.5);
+        }
+        
+        // Tint (adjust green-magenta balance)
+        if (settings.tint > 0) {
+          data[i+1] = Math.min(255, data[i+1] + settings.tint * 0.5);
+        } else if (settings.tint < 0) {
+          data[i+1] = Math.max(0, data[i+1] + settings.tint * 0.5);
         }
       }
       
@@ -1327,11 +1721,11 @@
       ctx.putImageData(imageData, 0, 0);
       
       // Apply vignette effect
-      if (adjustments.vignette !== 0) {
+      if (settings.vignette !== 0) {
         const centerX = width / 2;
         const centerY = height / 2;
         const radius = Math.max(width, height) / 2;
-        const vignetteStrength = adjustments.vignette / 100;
+        const vignetteStrength = settings.vignette / 100;
         
         ctx.globalCompositeOperation = 'source-over';
         const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.5, centerX, centerY, radius);
@@ -1349,9 +1743,11 @@
         beforeAfterContainer.style.display = 'flex';
         beforeImage.src = originalImage;
         afterImage.src = processedImage || originalImage;
+        beforeAfterBtn.textContent = 'Hide Before/After';
       } else {
         imagePreview.style.display = 'block';
         beforeAfterContainer.style.display = 'none';
+        beforeAfterBtn.textContent = 'Show Before/After';
       }
     }
     
@@ -1426,7 +1822,7 @@
           ctx.drawImage(img, 0, 0);
           
           // Apply adjustments
-          applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height);
+          applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height, adjustments);
           
           // Apply background removal effect
           // In a real app, this would use a proper background removal algorithm
@@ -1476,7 +1872,7 @@
           ctx.drawImage(tempCanvas, 0, 0);
           
           // Apply adjustments
-          applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height);
+          applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height, adjustments);
           
           // Get processed image
           processedImage = editorCanvas.toDataURL('image/jpeg');
@@ -1514,6 +1910,33 @@
       
       // Apply adjustments
       applyAdjustments();
+    }
+    
+    function batchAutoEnhance() {
+      // Apply preset adjustments for auto enhancement
+      batchSettings = {
+        ...batchSettings,
+        brightness: 10,
+        exposure: 5,
+        contrast: 15,
+        highlights: -5,
+        shadows: 10,
+        vignette: 15,
+        saturation: 10,
+        warmth: 5,
+        tint: 0,
+        sharpness: 20
+      };
+      
+      // Update sliders
+      Object.keys(batchSliders).forEach(key => {
+        if (batchSliders[key]) {
+          batchSliders[key].value = batchSettings[key];
+          if (batchSliderValues[key]) {
+            batchSliderValues[key].textContent = batchSettings[key];
+          }
+        }
+      });
     }
     
     // Batch processing functions
@@ -1587,14 +2010,20 @@
           '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>' :
           '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
         
-        selectBtn.addEventListener('click', () => toggleBatchImageSelection(image.id));
+        selectBtn.addEventListener('click', () => {
+          toggleBatchImageSelection(image.id);
+          addClickEffect(selectBtn);
+        });
         actions.appendChild(selectBtn);
         
         // Add remove button
         const removeBtn = document.createElement('div');
         removeBtn.className = 'batch-item-remove';
         removeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
-        removeBtn.addEventListener('click', () => removeBatchImage(image.id));
+        removeBtn.addEventListener('click', () => {
+          removeBatchImage(image.id);
+          addClickEffect(removeBtn);
+        });
         
         // Add processed badge if processed
         if (image.processed) {
@@ -1686,33 +2115,7 @@
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           
           // Apply batch adjustments
-          // Get image data
-          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-          const data = imageData.data;
-          
-          // Apply pixel-based adjustments
-          for (let i = 0; i < data.length; i += 4) {
-            // Brightness
-            data[i] = Math.min(255, Math.max(0, data[i] + batchSettings.brightness * 2.55));
-            data[i+1] = Math.min(255, Math.max(0, data[i+1] + batchSettings.brightness * 2.55));
-            data[i+2] = Math.min(255, Math.max(0, data[i+2] + batchSettings.brightness * 2.55));
-            
-            // Contrast
-            const factor = (259 * (batchSettings.contrast + 255)) / (255 * (259 - batchSettings.contrast));
-            data[i] = Math.min(255, Math.max(0, factor * (data[i] - 128) + 128));
-            data[i+1] = Math.min(255, Math.max(0, factor * (data[i+1] - 128) + 128));
-            data[i+2] = Math.min(255, Math.max(0, factor * (data[i+2] - 128) + 128));
-            
-            // Saturation
-            const gray = 0.2989 * data[i] + 0.5870 * data[i+1] + 0.1140 * data[i+2];
-            const satFactor = 1 + batchSettings.saturation / 100;
-            data[i] = Math.min(255, Math.max(0, gray + satFactor * (data[i] - gray)));
-            data[i+1] = Math.min(255, Math.max(0, gray + satFactor * (data[i+1] - gray)));
-            data[i+2] = Math.min(255, Math.max(0, gray + satFactor * (data[i+2] - gray)));
-          }
-          
-          // Put the modified image data back
-          ctx.putImageData(imageData, 0, 0);
+          applyImageAdjustments(ctx, canvas.width, canvas.height, batchSettings);
           
           // Apply background removal if selected
           if (batchSettings.removeBackground) {
