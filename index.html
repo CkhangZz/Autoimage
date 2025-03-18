@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PhotoMagic Editor ( TikTok : Ktran06.Cos )</title>
+  <title>PhotoMagic Editor</title>
   <style>
     /* Reset and base styles */
     * {
@@ -972,6 +972,89 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Progress modal for batch saving */
+    .save-progress-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    .save-progress-content {
+      background-color: rgba(30, 30, 30, 0.9);
+      padding: 2rem;
+      border-radius: 0.5rem;
+      width: 400px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .progress-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .progress-bar-container {
+      width: 100%;
+      height: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background-color: #9333ea;
+      border-radius: 1rem;
+      transition: width 0.3s ease;
+    }
+    
+    .progress-text {
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .progress-info {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+    }
+
+    /* Download queue overlay */
+    .download-queue-info {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      z-index: 50;
+      border-left: 4px solid #9333ea;
+      max-width: 300px;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .download-queue-title {
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    
+    .download-queue-text {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
   </style>
 </head>
 <body>
@@ -986,6 +1069,24 @@
   <!-- Toast Notification -->
   <div id="toast" class="toast">
     <div id="toast-message"></div>
+  </div>
+
+  <!-- Save Progress Modal -->
+  <div id="save-progress-modal" class="save-progress-modal" style="display: none;">
+    <div class="save-progress-content">
+      <h3 class="progress-title">Saving Images</h3>
+      <div class="progress-bar-container">
+        <div id="save-progress-bar" class="progress-bar" style="width: 0%;"></div>
+      </div>
+      <p id="progress-text" class="progress-text">Preparing files...</p>
+      <p id="progress-count" class="progress-info">0/0 files saved</p>
+    </div>
+  </div>
+
+  <!-- Download Queue Info -->
+  <div id="download-queue-info" class="download-queue-info" style="display: none;">
+    <div class="download-queue-title">Files downloading</div>
+    <div id="download-queue-text" class="download-queue-text">Processing your downloads...</div>
   </div>
 
   <!-- Main Container -->
@@ -1853,6 +1954,14 @@
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toast-message');
     
+    // Progress modal elements
+    const saveProgressModal = document.getElementById('save-progress-modal');
+    const saveProgressBar = document.getElementById('save-progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const progressCount = document.getElementById('progress-count');
+    const downloadQueueInfo = document.getElementById('download-queue-info');
+    const downloadQueueText = document.getElementById('download-queue-text');
+    
     // Text elements
     const textInput = document.getElementById('text-input');
     const fontFamily = document.getElementById('font-family');
@@ -2072,6 +2181,11 @@
     
     // Performance optimization - use requestAnimationFrame for UI updates
     let animationFrameId = null;
+    
+    // Download queue state
+    let downloadQueue = [];
+    let isDownloading = false;
+    let currentDownloadIndex = 0;
     
     // Initialize
     function init() {
@@ -3188,11 +3302,11 @@
     
     function updateBatchButtons() {
       const hasSelectedImages = batchImages.some(img => img.selected);
-      const hasProcessedImages = batchImages.some(img => img.selected && img.processed);
+      const hasProcessedImages = batchImages.some(img => img.processed && img.selected);
       
       processBatchBtn.disabled = !hasSelectedImages;
       processBatchBtnBottom.disabled = !hasSelectedImages;
-      saveBatchBtn.disabled = !hasProcessedImages && batchImages.length === 0;
+      saveBatchBtn.disabled = !hasProcessedImages;
     }
     
     function batchAutoEnhance() {
@@ -3343,33 +3457,110 @@
       });
     }
     
+    // Improved saveBatchImages function with better handling for multiple downloads
     function saveBatchImages() {
-      const processedImages = batchImages.filter(image => image.processed);
+      const processedImages = batchImages.filter(image => image.processed && image.selected);
       
       if (processedImages.length === 0) {
         showToast('No processed images to save', 'error');
         return;
       }
       
-      // Create a zip file if multiple images
-      if (processedImages.length > 1) {
-        // In a real app, you would use JSZip or similar library
-        // For this demo, we'll just save them individually
-        processedImages.forEach((image, index) => {
-          const link = document.createElement('a');
-          link.download = `processed-${index+1}.jpg`;
-          link.href = image.processed;
-          link.click();
-        });
-      } else {
-        // Save single image
-        const link = document.createElement('a');
-        link.download = 'processed-image.jpg';
-        link.href = processedImages[0].processed;
-        link.click();
+      // Clear any existing download queue
+      downloadQueue = [];
+      currentDownloadIndex = 0;
+      
+      // Show progress modal for larger batches
+      if (processedImages.length > 2) {
+        saveProgressModal.style.display = 'flex';
+        saveProgressBar.style.width = '0%';
+        progressText.textContent = 'Preparing files for download...';
+        progressCount.textContent = `0/${processedImages.length} files`;
       }
       
-      showToast(`${processedImages.length} images saved`, 'success');
+      // Prepare download queue
+      processedImages.forEach((image, index) => {
+        downloadQueue.push({
+          dataUrl: image.processed,
+          fileName: `processed-${index+1}.jpg`,
+          original: image
+        });
+      });
+      
+      // Start the download process
+      isDownloading = true;
+      processDownloadQueue();
+    }
+    
+    // Process download queue with controlled timing to avoid browser restrictions
+    function processDownloadQueue() {
+      if (!isDownloading || downloadQueue.length === 0) {
+        if (saveProgressModal.style.display === 'flex') {
+          setTimeout(() => {
+            saveProgressModal.style.display = 'none';
+          }, 1000);
+        }
+        showToast('All images saved successfully', 'success');
+        return;
+      }
+      
+      // Process downloads in batches for better browser compatibility
+      const currentBatchSize = Math.min(5, downloadQueue.length);
+      const currentBatch = downloadQueue.splice(0, currentBatchSize);
+      
+      // Show download info
+      downloadQueueInfo.style.display = 'block';
+      downloadQueueText.textContent = `Downloading ${currentBatch.length} files (${downloadQueue.length} remaining)`;
+      
+      // Update progress if modal is shown
+      if (saveProgressModal.style.display === 'flex') {
+        const totalProcessed = currentDownloadIndex + currentBatch.length;
+        const totalImages = currentDownloadIndex + currentBatch.length + downloadQueue.length;
+        const percentComplete = Math.round((totalProcessed / totalImages) * 100);
+        
+        saveProgressBar.style.width = `${percentComplete}%`;
+        progressText.textContent = `Downloading batch ${Math.ceil(totalProcessed / 5)} of ${Math.ceil(totalImages / 5)}`;
+        progressCount.textContent = `${totalProcessed}/${totalImages} files`;
+      }
+      
+      // Process each item in the batch
+      currentBatch.forEach(item => {
+        // Create download link
+        const link = document.createElement('a');
+        link.href = item.dataUrl;
+        link.download = item.fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        currentDownloadIndex++;
+      });
+      
+      // Process next batch after a delay
+      setTimeout(() => {
+        if (downloadQueue.length > 0) {
+          processDownloadQueue();
+        } else {
+          isDownloading = false;
+          
+          // Hide download info after a delay
+          setTimeout(() => {
+            downloadQueueInfo.style.display = 'none';
+          }, 3000);
+          
+          // Update final progress
+          if (saveProgressModal.style.display === 'flex') {
+            saveProgressBar.style.width = '100%';
+            progressText.textContent = 'All files downloaded successfully!';
+            
+            setTimeout(() => {
+              saveProgressModal.style.display = 'none';
+            }, 1000);
+          }
+          
+          showToast('All images saved successfully', 'success');
+        }
+      }, 1000); // Add a delay to avoid browser blocking multiple downloads
     }
     
     // Initialize the app
