@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PhotoMagic Editor</title>
+  <title>TikTok : Ktran06.Cos</title>
   <style>
     /* Reset and base styles */
     * {
@@ -311,7 +312,7 @@
 
     .controls-tabs-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       background-color: rgba(0, 0, 0, 0.3);
       border-radius: 0.375rem;
       overflow: hidden;
@@ -600,6 +601,167 @@
       box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.3);
     }
 
+    /* Text editor styles */
+    .text-editor {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .text-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .text-input {
+      grid-column: span 2;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .text-input:focus {
+      border-color: #9333ea;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.3);
+    }
+
+    .color-picker {
+      width: 100%;
+      height: 2.5rem;
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color-picker:hover {
+      border-color: #9333ea;
+    }
+
+    .select-input {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      color: white;
+      transition: all 0.2s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 1rem;
+    }
+
+    .select-input:focus {
+      border-color: #9333ea;
+      outline: none;
+    }
+
+    .text-position-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .position-btn {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .position-btn:hover {
+      background-color: rgba(147, 51, 234, 0.3);
+      border-color: #9333ea;
+    }
+
+    .position-btn.active {
+      background-color: #9333ea;
+      border-color: #9333ea;
+    }
+
+    .text-list {
+      margin-top: 1rem;
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.25rem;
+    }
+
+    .text-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .text-item:hover {
+      background-color: rgba(147, 51, 234, 0.1);
+    }
+
+    .text-item-content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 70%;
+    }
+
+    .text-item-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .text-item-btn {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .text-item-btn:hover {
+      background-color: #9333ea;
+      transform: scale(1.1);
+    }
+
+    .text-item-btn.delete {
+      background-color: rgba(220, 38, 38, 0.8);
+    }
+
+    .text-item-btn.delete:hover {
+      background-color: rgb(220, 38, 38);
+    }
+
+    .batch-text-controls {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 0.5rem;
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -739,7 +901,7 @@
 
     .batch-controls-tabs-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       background-color: rgba(0, 0, 0, 0.3);
       border-radius: 0.375rem;
       overflow: hidden;
@@ -801,6 +963,15 @@
       .image-container {
         min-height: 300px;
       }
+
+      .controls-tabs-list, 
+      .batch-controls-tabs-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .text-controls {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -808,7 +979,7 @@
   <!-- Video Background -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
-      <source src="https://discord.com/channels/1300489643632099379/1314665091920171039/1347232361665921134" type="https://discord.com/channels/1300489643632099379/1314665091920171039/1347232361665921134">
+      <source src="https://assets.codepen.io/1462889/video-bg.mp4" type="video/mp4">
     </video>
   </div>
   <div class="gradient-overlay"></div>
@@ -914,6 +1085,7 @@
               <div class="tab-trigger active" data-controls-tab="adjust">Adjust</div>
               <div class="tab-trigger" data-controls-tab="color">Color</div>
               <div class="tab-trigger" data-controls-tab="effects">Effects</div>
+              <div class="tab-trigger" data-controls-tab="text">Text</div>
             </div>
           </div>
 
@@ -1117,6 +1289,114 @@
             </div>
           </div>
 
+          <!-- Text Tab -->
+          <div id="text-tab" class="controls-tab-content">
+            <h3 class="section-title">Add Text</h3>
+            <div class="text-controls">
+              <input type="text" id="text-input" class="text-input" placeholder="Enter text here..." disabled>
+              
+              <div class="input-group">
+                <label for="font-family">Font</label>
+                <select id="font-family" class="select-input" disabled>
+                  <option value="Arial, sans-serif">Arial</option>
+                  <option value="'Times New Roman', serif">Times New Roman</option>
+                  <option value="'Courier New', monospace">Courier New</option>
+                  <option value="Georgia, serif">Georgia</option>
+                  <option value="Verdana, sans-serif">Verdana</option>
+                  <option value="Impact, sans-serif">Impact</option>
+                </select>
+              </div>
+              
+              <div class="input-group">
+                <label for="font-size">Size</label>
+                <input type="number" id="font-size" class="select-input" value="24" min="8" max="120" disabled>
+              </div>
+              
+              <div class="input-group">
+                <label for="text-color">Color</label>
+                <input type="color" id="text-color" class="color-picker" value="#ffffff" disabled>
+              </div>
+              
+              <div class="input-group">
+                <label for="text-style">Style</label>
+                <select id="text-style" class="select-input" disabled>
+                  <option value="normal">Normal</option>
+                  <option value="bold">Bold</option>
+                  <option value="italic">Italic</option>
+                  <option value="bold italic">Bold Italic</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="text-position">
+              <label>Position</label>
+              <div class="text-position-controls">
+                <button class="position-btn active" data-position="top-left" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="17 18 11 12 17 6"></polyline>
+                    <polyline points="11 18 5 12 11 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="top-center" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="top-right" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="7 18 13 12 7 6"></polyline>
+                    <polyline points="13 18 19 12 13 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="middle-left" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="middle-center" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="middle-right" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="bottom-left" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="17 6 11 12 17 18"></polyline>
+                    <polyline points="11 6 5 12 11 18"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="bottom-center" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 9 12 15 6 9"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="bottom-right" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="7 6 13 12 7 18"></polyline>
+                    <polyline points="13 6 19 12 13 18"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <button id="add-text-btn" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5v14"></path>
+              </svg>
+              Add Text
+            </button>
+            
+            <div id="text-list-container" style="margin-top: 1rem; display: none;">
+              <h3 class="section-title">Text Elements</h3>
+              <div id="text-list" class="text-list"></div>
+            </div>
+          </div>
+
           <!-- Presets Section -->
           <div class="presets-section">
             <div class="presets-header">
@@ -1199,7 +1479,7 @@
                     <polyline points="17 21 17 13 7 13 7 21"></polyline>
                     <polyline points="7 3 7 8 15 8"></polyline>
                   </svg>
-                  Save Processed
+                  Save All
                 </button>
               </div>
             </div>
@@ -1217,6 +1497,7 @@
               <div class="tab-trigger active" data-batch-tab="adjust">Adjust</div>
               <div class="tab-trigger" data-batch-tab="color">Color</div>
               <div class="tab-trigger" data-batch-tab="effects">Effects</div>
+              <div class="tab-trigger" data-batch-tab="text">Text</div>
             </div>
           </div>
           
@@ -1404,6 +1685,101 @@
             </div>
           </div>
           
+          <!-- Batch Text Tab -->
+          <div id="batch-text-tab" class="batch-controls-tab-content">
+            <h3 class="section-title">Add Text to All Images</h3>
+            <div class="text-controls">
+              <input type="text" id="batch-text-input" class="text-input" placeholder="Enter text for all images...">
+              
+              <div class="input-group">
+                <label for="batch-font-family">Font</label>
+                <select id="batch-font-family" class="select-input">
+                  <option value="Arial, sans-serif">Arial</option>
+                  <option value="'Times New Roman', serif">Times New Roman</option>
+                  <option value="'Courier New', monospace">Courier New</option>
+                  <option value="Georgia, serif">Georgia</option>
+                  <option value="Verdana, sans-serif">Verdana</option>
+                  <option value="Impact, sans-serif">Impact</option>
+                </select>
+              </div>
+              
+              <div class="input-group">
+                <label for="batch-font-size">Size</label>
+                <input type="number" id="batch-font-size" class="select-input" value="24" min="8" max="120">
+              </div>
+              
+              <div class="input-group">
+                <label for="batch-text-color">Color</label>
+                <input type="color" id="batch-text-color" class="color-picker" value="#ffffff">
+              </div>
+              
+              <div class="input-group">
+                <label for="batch-text-style">Style</label>
+                <select id="batch-text-style" class="select-input">
+                  <option value="normal">Normal</option>
+                  <option value="bold">Bold</option>
+                  <option value="italic">Italic</option>
+                  <option value="bold italic">Bold Italic</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="text-position">
+              <label>Position</label>
+              <div class="text-position-controls">
+                <button class="position-btn active" data-position="top-left">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="17 18 11 12 17 6"></polyline>
+                    <polyline points="11 18 5 12 11 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="top-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="top-right">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="7 18 13 12 7 6"></polyline>
+                    <polyline points="13 18 19 12 13 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="middle-left">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="middle-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="middle-right">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="bottom-left">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="17 6 11 12 17 18"></polyline>
+                    <polyline points="11 6 5 12 11 18"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="bottom-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 9 12 15 6 9"></polyline>
+                  </svg>
+                </button>
+                <button class="position-btn" data-position="bottom-right">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="7 6 13 12 7 18"></polyline>
+                    <polyline points="13 6 19 12 13 18"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          
           <!-- Batch Presets Section -->
           <div class="presets-section">
             <div class="presets-header">
@@ -1477,6 +1853,25 @@
     const presetsGrid = document.getElementById('presets-grid');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toast-message');
+    
+    // Text elements
+    const textInput = document.getElementById('text-input');
+    const fontFamily = document.getElementById('font-family');
+    const fontSize = document.getElementById('font-size');
+    const textColor = document.getElementById('text-color');
+    const textStyle = document.getElementById('text-style');
+    const positionBtns = document.querySelectorAll('.position-btn');
+    const addTextBtn = document.getElementById('add-text-btn');
+    const textListContainer = document.getElementById('text-list-container');
+    const textList = document.getElementById('text-list');
+    
+    // Batch text elements
+    const batchTextInput = document.getElementById('batch-text-input');
+    const batchFontFamily = document.getElementById('batch-font-family');
+    const batchFontSize = document.getElementById('batch-font-size');
+    const batchTextColor = document.getElementById('batch-text-color');
+    const batchTextStyle = document.getElementById('batch-text-style');
+    const batchPositionBtns = document.querySelectorAll('#batch-text-tab .position-btn');
     
     // Batch elements
     const batchDropzone = document.getElementById('batch-dropzone');
@@ -1594,8 +1989,19 @@
       removeBackground: false,
       resize: false,
       resizeWidth: 1920,
-      resizeHeight: 1080
+      resizeHeight: 1080,
+      addText: false,
+      text: '',
+      fontFamily: 'Arial, sans-serif',
+      fontSize: 24,
+      textColor: '#ffffff',
+      textStyle: 'normal',
+      textPosition: 'top-left'
     };
+    
+    // Text elements state
+    let textElements = [];
+    let currentTextPosition = 'top-left';
     
     // Presets
     const defaultPresets = {
@@ -1664,6 +2070,9 @@
     // Load presets from localStorage or use defaults
     let presets = JSON.parse(localStorage.getItem('photoEditorPresets')) || defaultPresets;
     let batchPresets = JSON.parse(localStorage.getItem('photoEditorBatchPresets')) || defaultPresets;
+    
+    // Performance optimization - use requestAnimationFrame for UI updates
+    let animationFrameId = null;
     
     // Initialize
     function init() {
@@ -1764,6 +2173,24 @@
       upscaleBtn.addEventListener('click', upscaleImage);
       autoEnhanceBtn.addEventListener('click', autoEnhance);
       
+      // Text events
+      addTextBtn.addEventListener('click', addTextToImage);
+      positionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          positionBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTextPosition = btn.dataset.position;
+        });
+      });
+      
+      batchPositionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          batchPositionBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          batchSettings.textPosition = btn.dataset.position;
+        });
+      });
+      
       // Preset events
       savePresetBtn.addEventListener('click', () => {
         savePresetForm.style.display = 'block';
@@ -1784,7 +2211,16 @@
         sliders[key].addEventListener('input', (e) => {
           adjustments[key] = parseInt(e.target.value);
           sliderValues[key].textContent = e.target.value;
-          applyAdjustments();
+          
+          // Use requestAnimationFrame for smoother UI updates
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+          }
+          
+          animationFrameId = requestAnimationFrame(() => {
+            applyAdjustments();
+            animationFrameId = null;
+          });
         });
       });
       
@@ -2076,11 +2512,116 @@
         // Reset adjustments
         resetAdjustments();
         
+        // Reset text elements
+        textElements = [];
+        renderTextList();
+        
         // Show success toast
         showToast('Image loaded successfully', 'success');
       };
       
       reader.readAsDataURL(file);
+    }
+    
+    // Text handling
+    function addTextToImage() {
+      const text = textInput.value.trim();
+      if (!text) {
+        showToast('Please enter text to add', 'error');
+        return;
+      }
+      
+      const textElement = {
+        id: Date.now(),
+        text,
+        fontFamily: fontFamily.value,
+        fontSize: parseInt(fontSize.value),
+        color: textColor.value,
+        style: textStyle.value,
+        position: currentTextPosition
+      };
+      
+      textElements.push(textElement);
+      renderTextList();
+      applyAdjustments(); // Re-render image with text
+      
+      // Clear input
+      textInput.value = '';
+      
+      showToast('Text added to image', 'success');
+    }
+    
+    function renderTextList() {
+      if (textElements.length === 0) {
+        textListContainer.style.display = 'none';
+        return;
+      }
+      
+      textListContainer.style.display = 'block';
+      textList.innerHTML = '';
+      
+      textElements.forEach(element => {
+        const item = document.createElement('div');
+        item.className = 'text-item';
+        
+        const content = document.createElement('div');
+        content.className = 'text-item-content';
+        content.textContent = element.text;
+        
+        const actions = document.createElement('div');
+        actions.className = 'text-item-actions';
+        
+        const editBtn = document.createElement('button');
+        editBtn.className = 'text-item-btn';
+        editBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>';
+        editBtn.addEventListener('click', () => editTextElement(element.id));
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'text-item-btn delete';
+        deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+        deleteBtn.addEventListener('click', () => removeTextElement(element.id));
+        
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+        
+        item.appendChild(content);
+        item.appendChild(actions);
+        textList.appendChild(item);
+      });
+    }
+    
+    function editTextElement(id) {
+      const element = textElements.find(el => el.id === id);
+      if (!element) return;
+      
+      // Populate form with element values
+      textInput.value = element.text;
+      fontFamily.value = element.fontFamily;
+      fontSize.value = element.fontSize;
+      textColor.value = element.color;
+      textStyle.value = element.style;
+      
+      // Set position
+      positionBtns.forEach(btn => {
+        if (btn.dataset.position === element.position) {
+          btn.classList.add('active');
+          currentTextPosition = element.position;
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Remove the element
+      removeTextElement(id);
+      
+      // Focus on text input
+      textInput.focus();
+    }
+    
+    function removeTextElement(id) {
+      textElements = textElements.filter(el => el.id !== id);
+      renderTextList();
+      applyAdjustments(); // Re-render image without the removed text
     }
     
     // Image processing
@@ -2104,6 +2645,11 @@
           // Apply adjustments
           applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height, adjustments);
           
+          // Add text elements
+          if (textElements.length > 0) {
+            addTextElementsToCanvas(ctx, editorCanvas.width, editorCanvas.height);
+          }
+          
           // Get processed image
           processedImage = editorCanvas.toDataURL('image/jpeg');
           
@@ -2124,46 +2670,62 @@
       }, 50);
     }
     
+    function addTextElementsToCanvas(ctx, width, height) {
+      textElements.forEach(element => {
+        // Set font properties
+        const fontStyle = element.style.includes('italic') ? 'italic ' : '';
+        const fontWeight = element.style.includes('bold') ? 'bold ' : '';
+        ctx.font = `${fontStyle}${fontWeight}${element.fontSize}px ${element.fontFamily}`;
+        ctx.fillStyle = element.color;
+        ctx.textBaseline = 'top';
+        
+        // Calculate position
+        let x = 20;
+        let y = 20;
+        
+        const textWidth = ctx.measureText(element.text).width;
+        
+        if (element.position.includes('center')) {
+          x = (width - textWidth) / 2;
+        } else if (element.position.includes('right')) {
+          x = width - textWidth - 20;
+        }
+        
+        if (element.position.includes('middle')) {
+          y = (height - element.fontSize) / 2;
+        } else if (element.position.includes('bottom')) {
+          y = height - element.fontSize - 20;
+        }
+        
+        // Add text shadow for better visibility
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        
+        // Draw text
+        ctx.fillText(element.text, x, y);
+        
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+      });
+    }
+    
     function applyImageAdjustments(ctx, width, height, settings) {
       // Get image data
       const imageData = ctx.getImageData(0, 0, width, height);
       const data = imageData.data;
       
-      // Apply pixel-based adjustments
-      for (let i = 0; i < data.length; i += 4) {
-        // Brightness
-        data[i] = Math.min(255, Math.max(0, data[i] + settings.brightness * 2.55));
-        data[i+1] = Math.min(255, Math.max(0, data[i+1] + settings.brightness * 2.55));
-        data[i+2] = Math.min(255, Math.max(0, data[i+2] + settings.brightness * 2.55));
-        
-        // Contrast
-        const factor = (259 * (settings.contrast + 255)) / (255 * (259 - settings.contrast));
-        data[i] = Math.min(255, Math.max(0, factor * (data[i] - 128) + 128));
-        data[i+1] = Math.min(255, Math.max(0, factor * (data[i+1] - 128) + 128));
-        data[i+2] = Math.min(255, Math.max(0, factor * (data[i+2] - 128) + 128));
-        
-        // Saturation
-        const gray = 0.2989 * data[i] + 0.5870 * data[i+1] + 0.1140 * data[i+2];
-        const satFactor = 1 + settings.saturation / 100;
-        data[i] = Math.min(255, Math.max(0, gray + satFactor * (data[i] - gray)));
-        data[i+1] = Math.min(255, Math.max(0, gray + satFactor * (data[i+1] - gray)));
-        data[i+2] = Math.min(255, Math.max(0, gray + satFactor * (data[i+2] - gray)));
-        
-        // Warmth (adjust red-blue balance)
-        if (settings.warmth > 0) {
-          data[i] = Math.min(255, data[i] + settings.warmth * 0.5);
-          data[i+2] = Math.max(0, data[i+2] - settings.warmth * 0.5);
-        } else if (settings.warmth < 0) {
-          data[i] = Math.max(0, data[i] + settings.warmth * 0.5);
-          data[i+2] = Math.min(255, data[i+2] - settings.warmth * 0.5);
-        }
-        
-        // Tint (adjust green-magenta balance)
-        if (settings.tint > 0) {
-          data[i+1] = Math.min(255, data[i+1] + settings.tint * 0.5);
-        } else if (settings.tint < 0) {
-          data[i+1] = Math.max(0, data[i+1] + settings.tint * 0.5);
-        }
+      // Performance optimization - process pixels in chunks
+      const chunkSize = 10000;
+      const totalPixels = data.length / 4;
+      
+      for (let i = 0; i < totalPixels; i += chunkSize) {
+        const endPixel = Math.min(i + chunkSize, totalPixels);
+        processPixelChunk(data, i, endPixel, settings);
       }
       
       // Put the modified image data back
@@ -2182,6 +2744,46 @@
         gradient.addColorStop(1, `rgba(0,0,0,${vignetteStrength})`);
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
+      }
+    }
+    
+    function processPixelChunk(data, startPixel, endPixel, settings) {
+      for (let i = startPixel; i < endPixel; i++) {
+        const idx = i * 4;
+        
+        // Brightness
+        data[idx] = Math.min(255, Math.max(0, data[idx] + settings.brightness * 2.55));
+        data[idx+1] = Math.min(255, Math.max(0, data[idx+1] + settings.brightness * 2.55));
+        data[idx+2] = Math.min(255, Math.max(0, data[idx+2] + settings.brightness * 2.55));
+        
+        // Contrast
+        const factor = (259 * (settings.contrast + 255)) / (255 * (259 - settings.contrast));
+        data[idx] = Math.min(255, Math.max(0, factor * (data[idx] - 128) + 128));
+        data[idx+1] = Math.min(255, Math.max(0, factor * (data[idx+1] - 128) + 128));
+        data[idx+2] = Math.min(255, Math.max(0, factor * (data[idx+2] - 128) + 128));
+        
+        // Saturation
+        const gray = 0.2989 * data[idx] + 0.5870 * data[idx+1] + 0.1140 * data[idx+2];
+        const satFactor = 1 + settings.saturation / 100;
+        data[idx] = Math.min(255, Math.max(0, gray + satFactor * (data[idx] - gray)));
+        data[idx+1] = Math.min(255, Math.max(0, gray + satFactor * (data[idx+1] - gray)));
+        data[idx+2] = Math.min(255, Math.max(0, gray + satFactor * (data[idx+2] - gray)));
+        
+        // Warmth (adjust red-blue balance)
+        if (settings.warmth > 0) {
+          data[idx] = Math.min(255, data[idx] + settings.warmth * 0.5);
+          data[idx+2] = Math.max(0, data[idx+2] - settings.warmth * 0.5);
+        } else if (settings.warmth < 0) {
+          data[idx] = Math.max(0, data[idx] + settings.warmth * 0.5);
+          data[idx+2] = Math.min(255, data[idx+2] - settings.warmth * 0.5);
+        }
+        
+        // Tint (adjust green-magenta balance)
+        if (settings.tint > 0) {
+          data[idx+1] = Math.min(255, data[idx+1] + settings.tint * 0.5);
+        } else if (settings.tint < 0) {
+          data[idx+1] = Math.max(0, data[idx+1] + settings.tint * 0.5);
+        }
       }
     }
     
@@ -2231,6 +2833,10 @@
         processedImage = null;
       }
       
+      // Reset text elements
+      textElements = [];
+      renderTextList();
+      
       // Add animation
       resetBtn.classList.add('shake');
       setTimeout(() => resetBtn.classList.remove('shake'), 500);
@@ -2252,6 +2858,18 @@
       upscaleBtn.disabled = false;
       autoEnhanceBtn.disabled = false;
       savePresetBtn.disabled = false;
+      
+      // Enable text controls
+      textInput.disabled = false;
+      fontFamily.disabled = false;
+      fontSize.disabled = false;
+      textColor.disabled = false;
+      textStyle.disabled = false;
+      addTextBtn.disabled = false;
+      
+      positionBtns.forEach(btn => {
+        btn.disabled = false;
+      });
     }
     
     function saveImage() {
@@ -2295,6 +2913,12 @@
           ctx.beginPath();
           ctx.arc(editorCanvas.width/2, editorCanvas.height/2, editorCanvas.width/2, 0, Math.PI * 2);
           ctx.fill();
+          
+          // Add text elements if any
+          if (textElements.length > 0) {
+            ctx.globalCompositeOperation = 'source-over';
+            addTextElementsToCanvas(ctx, editorCanvas.width, editorCanvas.height);
+          }
           
           // Get processed image
           processedImage = editorCanvas.toDataURL('image/png');
@@ -2344,6 +2968,23 @@
           
           // Apply adjustments
           applyImageAdjustments(ctx, editorCanvas.width, editorCanvas.height, adjustments);
+          
+          // Add text elements if any
+          if (textElements.length > 0) {
+            // Scale up text size for upscaled image
+            const scaledTextElements = textElements.map(el => ({
+              ...el,
+              fontSize: el.fontSize * 2
+            }));
+            
+            const originalElements = [...textElements];
+            textElements = scaledTextElements;
+            
+            addTextElementsToCanvas(ctx, editorCanvas.width, editorCanvas.height);
+            
+            // Restore original text elements
+            textElements = originalElements;
+          }
           
           // Get processed image
           processedImage = editorCanvas.toDataURL('image/jpeg');
@@ -2552,7 +3193,7 @@
       
       processBatchBtn.disabled = !hasSelectedImages;
       processBatchBtnBottom.disabled = !hasSelectedImages;
-      saveBatchBtn.disabled = !hasProcessedImages;
+      saveBatchBtn.disabled = !hasProcessedImages && batchImages.length === 0;
     }
     
     function batchAutoEnhance() {
@@ -2591,6 +3232,17 @@
       const selectedImages = batchImages.filter(img => img.selected);
       let processedCount = 0;
       
+      // Check if batch text should be added
+      const addBatchText = batchTextInput.value.trim() !== '';
+      const batchTextSettings = {
+        text: batchTextInput.value.trim(),
+        fontFamily: batchFontFamily.value,
+        fontSize: parseInt(batchFontSize.value),
+        color: batchTextColor.value,
+        style: batchTextStyle.value,
+        position: batchSettings.textPosition
+      };
+      
       // Process each selected image
       selectedImages.forEach(image => {
         const img = new Image();
@@ -2621,6 +3273,50 @@
             ctx.beginPath();
             ctx.arc(canvas.width/2, canvas.height/2, canvas.width/2, 0, Math.PI * 2);
             ctx.fill();
+            ctx.globalCompositeOperation = 'source-over';
+          }
+          
+          // Add batch text if provided
+          if (addBatchText) {
+            // Set font properties
+            const fontStyle = batchTextSettings.style.includes('italic') ? 'italic ' : '';
+            const fontWeight = batchTextSettings.style.includes('bold') ? 'bold ' : '';
+            ctx.font = `${fontStyle}${fontWeight}${batchTextSettings.fontSize}px ${batchTextSettings.fontFamily}`;
+            ctx.fillStyle = batchTextSettings.color;
+            ctx.textBaseline = 'top';
+            
+            // Calculate position
+            let x = 20;
+            let y = 20;
+            
+            const textWidth = ctx.measureText(batchTextSettings.text).width;
+            
+            if (batchTextSettings.position.includes('center')) {
+              x = (canvas.width - textWidth) / 2;
+            } else if (batchTextSettings.position.includes('right')) {
+              x = canvas.width - textWidth - 20;
+            }
+            
+            if (batchTextSettings.position.includes('middle')) {
+              y = (canvas.height - batchTextSettings.fontSize) / 2;
+            } else if (batchTextSettings.position.includes('bottom')) {
+              y = canvas.height - batchTextSettings.fontSize - 20;
+            }
+            
+            // Add text shadow for better visibility
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
+            
+            // Draw text
+            ctx.fillText(batchTextSettings.text, x, y);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
           }
           
           // Save processed image
@@ -2649,18 +3345,32 @@
     }
     
     function saveBatchImages() {
-      const processedCount = batchImages.filter(image => image.processed && image.selected).length;
+      const processedImages = batchImages.filter(image => image.processed);
       
-      batchImages.forEach(image => {
-        if (image.processed && image.selected) {
+      if (processedImages.length === 0) {
+        showToast('No processed images to save', 'error');
+        return;
+      }
+      
+      // Create a zip file if multiple images
+      if (processedImages.length > 1) {
+        // In a real app, you would use JSZip or similar library
+        // For this demo, we'll just save them individually
+        processedImages.forEach((image, index) => {
           const link = document.createElement('a');
-          link.download = `processed-${image.file.name}`;
+          link.download = `processed-${index+1}.jpg`;
           link.href = image.processed;
           link.click();
-        }
-      });
+        });
+      } else {
+        // Save single image
+        const link = document.createElement('a');
+        link.download = 'processed-image.jpg';
+        link.href = processedImages[0].processed;
+        link.click();
+      }
       
-      showToast(`${processedCount} images saved`, 'success');
+      showToast(`${processedImages.length} images saved`, 'success');
     }
     
     // Initialize the app
